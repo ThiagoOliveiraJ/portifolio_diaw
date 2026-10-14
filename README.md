@@ -38,8 +38,8 @@ Este repositório abriga meu portfólio pessoal como Desenvolvedor Front-end, co
 
 ## ▶️ Demonstração
 
-Acesse a versão ada do portfólio:  
-🔗 [euthiago.com](https://euthiago.com) 
+Acesse a versão no ar do portfólio:  
+🔗 [Clique Aqui](https://portifoliodiaw.vercel.app/) 
 
 ## 🧪 Como Rodar Localmente
 
@@ -62,10 +62,10 @@ npm dev run
 
 ## 📸 Preview do Projeto
 
-![Tela de Inicio](/img/preview/image.png)
-![Outra Seção](/img/preview/image2.png)
-![Outra Seção](/img/preview/image3.png)
-![Mobile](/img/preview/mobile.png)
+![Tela de Inicio](/public/wireframes/docs/wireframes/1_Sobre_mim.png)
+![Outra Seção](/public/wireframes/docs/wireframes/2_Projetos.png)
+![Outra Seção](/public/wireframes/docs/wireframes/3_Experiências_e_Formações.png)
+![Outra Seção](/public/wireframes/docs/wireframes/4_Contato.png)
 
 Para dúvidas ou feedback ou contato:
 
