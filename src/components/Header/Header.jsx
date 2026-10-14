@@ -33,6 +33,7 @@ export function Header({ isDarkMode, toggleTheme, page, onNavigate }) {
                     <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 256 256" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M128,20a108,108,0,0,0,0,216c22.27,0,45.69-6.73,62.64-18a12,12,0,1,0-13.29-20c-13,8.63-31.89,14-49.35,14a84,84,0,1,1,84-84c0,9.29-1.67,17.08-4.69,21.95-2.64,4.24-6,6.05-11.31,6.05s-8.67-1.81-11.31-6.05c-3-4.87-4.69-12.66-4.69-21.95V88a12,12,0,0,0-23.49-3.46,52,52,0,1,0,8.86,79.57C172.3,174.3,182.81,180,196,180c24.67,0,40-19.92,40-52A108.12,108.12,0,0,0,128,20Zm0,136a28,28,0,1,1,28-28A28,28,0,0,1,128,156Z"></path></svg>
                     <h4 className="hover:cursor-pointer">Thiago Oliveira</h4>
                 </span>
+                <div className="flex items-center gap-4 sm:gap-6">
                 <ul className="flex items-center gap-3 sm:gap-5 relative text-xs sm:text-sm">
                     {links.map(([key, label]) => (
                         <li key={key}>
@@ -44,7 +45,7 @@ export function Header({ isDarkMode, toggleTheme, page, onNavigate }) {
                         </li>
                     ))}
                 </ul>
-                <div className="flex items-center gap-3 sm:gap-4 relative">
+                <div className="flex items-center gap-1 relative">
                     <button type="button" className=" hover:cursor-pointer hover-scale transition-all duration-400" onClick={toggleTheme} aria-label="Toggle theme">
                         <svg className={`${isDarkMode ? "block" : "hidden"}`} aria-hidden="true" focusable="false" height="22" role="presentation" viewBox="0 0 24 24" width="22"><g fill="currentColor"><path d="M19 12a7 7 0 11-7-7 7 7 0 017 7z"></path><path d="M12 22.96a.969.969 0 01-1-.96v-.08a1 1 0 012 0 1.038 1.038 0 01-1 1.04zm7.14-2.82a1.024 1.024 0 01-.71-.29l-.13-.13a1 1 0 011.41-1.41l.13.13a1 1 0 010 1.41.984.984 0 01-.7.29zm-14.28 0a1.024 1.024 0 01-.71-.29 1 1 0 010-1.41l.13-.13a1 1 0 011.41 1.41l-.13.13a1 1 0 01-.7.29zM22 13h-.08a1 1 0 010-2 1.038 1.038 0 011.04 1 .969.969 0 01-.96 1zM2.08 13H2a1 1 0 010-2 1.038 1.038 0 011.04 1 .969.969 0 01-.96 1zm16.93-7.01a1.024 1.024 0 01-.71-.29 1 1 0 010-1.41l.13-.13a1 1 0 011.41 1.41l-.13.13a.984.984 0 01-.7.29zm-14.02 0a1.024 1.024 0 01-.71-.29l-.13-.14a1 1 0 011.41-1.41l.13.13a1 1 0 010 1.41.97.97 0 01-.7.3zM12 3.04a.969.969 0 01-1-.96V2a1 1 0 012 0 1.038 1.038 0 01-1 1.04z"></path></g></svg>
                         
@@ -57,6 +58,7 @@ export function Header({ isDarkMode, toggleTheme, page, onNavigate }) {
                         <p className="hover:cursor-pointer" onClick={() => handleLanguageSelect("en")}>English</p>
                         <p className="hover:cursor-pointer" onClick={() => handleLanguageSelect("pt")}>Português</p>
                     </div>
+                </div>
                 </div>
             </div>
         </header>
