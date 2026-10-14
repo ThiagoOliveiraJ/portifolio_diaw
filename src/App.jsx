@@ -1,0 +1,279 @@
+1
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+
+
+import { Header } from './components/Header/Header'
+
+import Carousel from './components/Carousel/Carousel';
+import MetaBalls from './components/MetalBalls/MetalBalls';
+
+
+import { AcademicItem } from './components/AcademicItem/AcademicItem';
+import { ProjectCard } from "./components/ProjectCard/ProjectCard";
+import { ExperienceItem } from "./components/ExperienceItem/ExperienceItem";
+
+import { Mail, MessageCircle, Send } from 'lucide-react'
+
+
+
+import './global.css'
+
+
+const PAGES = ["about", "projects", "experience", "contact"];
+const CONTACT_EMAIL = "contato@euthiago.com";
+const WHATSAPP_NUMBER = "5531991969219";
+
+
+function App() {
+  const { t } = useTranslation();
+
+  const academicItems = t("academic_items", { returnObjects: true });
+
+  const projectItems = t("project_items", { returnObjects: true });
+  const experienceItems = t("experience_items", { returnObjects: true });
+
+  const [page, setPage] = useState("about");
+
+  // Destaca no menu a seção que está visível durante a rolagem
+  useEffect(() => {
+    const onScroll = () => {
+      const line = window.innerHeight * 0.35;
+      let current = PAGES[0];
+      for (const key of PAGES) {
+        const el = document.getElementById(key);
+        if (el && el.getBoundingClientRect().top <= line) current = key;
+      }
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) {
+        current = PAGES[PAGES.length - 1];
+      }
+      setPage(current);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
+  const navigate = (key) => {
+    const el = document.getElementById(key);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    history.replaceState(null, "", `#${key}`);
+  };
+
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Contato pelo portfólio - ${form.name}`);
+    const body = encodeURIComponent(`${form.message}\n\n${form.name} <${form.email}>`);
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  };
+  const [gradientColor, setGradientColor] = useState('#0A0A0A')
+  const [metaColor, setMetaColor] = useState("#ffffff");
+
+  const [isDarkMode, setIsDarkMode] = useState(
+    () => document.documentElement.classList.contains("dark")
+  );
+
+  const toggleTheme = () => {
+    const html = document.documentElement;
+    const isCurrentlyDark = html.classList.contains("dark");
+
+    if (isCurrentlyDark) {
+      html.classList.remove("dark");
+      setIsDarkMode(false);
+      setMetaColor("#1C243A");
+      setGradientColor("white")
+    } else {
+      html.classList.add("dark");
+      setIsDarkMode(true);
+      setMetaColor("#ffffff");
+      setGradientColor("#0A0A0A")
+
+    }
+  };
+
+
+  const inputClass = "w-full rounded-md border border-[#1C243A]/30 dark:border-white/20 bg-transparent px-4 py-3 text-sm font-normal placeholder:text-zinc-500 focus:outline-none focus:border-[#1C243A] dark:focus:border-white";
+  const outlineBtn = "flex items-center gap-2 border border-[#1C243A] dark:border-white p-3 rounded-md font-semibold hover:cursor-pointer hover-scale";
+
+  return (
+    <div className="bg-[#FFFFFF] dark:bg-[#0A0A0A] dark:text-[white] min-h-screen flex flex-col">
+      <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} page={page} onNavigate={navigate} />
+
+      <div className="flex-1">
+        {(
+          <>
+            <main id="about" className='mx-auto w-[95%] h-screen flex flex-col justify-between  lg:flex-row 2xl:w-full  2xl:max-w-6xl mx-auto'>
+        <div className='w-full mt-30  flex items-center flex-col justify-center lg:w-[50%]'>
+          <div className='w-full flex flex-col items-start justify-center '>
+            <h3 className='text-4xl font-semibold text-[#1C243A] dark:text-[white] md:text-6xl'>Thiago Oliveira</h3>
+            <h4 className='text-xl text-[#1C243A] dark:text-[#cccc] lg:ml-2 mt-3'>{t("role")}</h4>
+          </div>
+          <div>
+            <p className='mt-5  text-start text-[#0A0A0A] dark:text-[#cccc] text-base lg:ml-2' dangerouslySetInnerHTML={{ __html: t("intro") }} />
+          </div>
+          <div className='w-full flex flex-wrap justify-start items-center gap-5 mt-5 lg:ml-2'>
+            <a href='https://www.linkedin.com/in/thiagooliveiradev/' className=' flex flex-1 justify-center items-center gap-2 border-1 border-[#1C243A] dark:border-1 dark:border-[white] dark:text-[white] p-2 rounded-md dark:hover:text-[#ccc] hover:cursor-pointer hover-scale' target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin-icon lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg>
+              <p className='mt-1 font-semibold'>Linkedin</p>
+            </a>
+            <a href='https://github.com/ThiagoOliveiraJ' className=' flex  flex-1 justify-center items-center gap-2 border-1 border-[#1C243A] dark:border-1 dark:border-[white] dark:text-[white] p-2 rounded-md dark:hover:text-[#ccc] hover:cursor-pointer hover-scale' target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github-icon lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></svg>
+              <p className='mt-1 font-semibold'>GitHub</p>
+            </a>
+            <a href='/Curriculo_Thiago_Oliveira.pdf' download='Curriculo_Thiago_Oliveira.pdf' className=' flex  flex justify-center items-center gap-2 border-1 border-[#1C243A] dark:border-1 dark:border-[white] dark:text-[white] dark:hover:text-[#ccc] p-2 rounded-md hover:cursor-pointer hover-scale' target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text-icon lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /><path d="M14 2v4a2 2 0 0 0 2 2h4" /><path d="M10 9H8" /><path d="M16 13H8" /><path d="M16 17H8" /></svg>
+              <p className='mt-1 font-semibold'>CV</p>
+            </a>
+            <span className='flex gap-2 flex-2 dark:text-[white]'>
+              <div className='relative'>
+                <div className='animate-ping absolute inline-flex h-[20px] w-[20px] rounded-full bg-[#1C243A]  dark:bg-white  opacity-75'></div>
+                <div className='relative inline-flex rounded-full size-5 bg-[#1C243A] dark:bg-white'></div>
+              </div>
+
+              Open to work!
+            </span>
+          </div>
+        </div >
+        <div className='w-full h-full overflow-visible relative lg:w-[50%]' >
+          <div className='absolute inset-0'>
+            <MetaBalls
+              color={metaColor}
+              cursorBallColor={metaColor}
+              cursorBallSize={2}
+              ballCount={12}
+              animationSize={40}
+              enableMouseInteraction={true}
+              enableTransparency={true}
+              hoverSmoothness={0.05}
+              clumpFactor={1}
+              speed={0.3}
+            />
+          </div>
+        </div>
+      </main >
+
+            <section className='mt-10 mb-20 2xl:max-w-6xl mx-auto ' >
+        <h4 className='text-3xl font-bold my-10 text-[#1C243A] dark:text-[white] lg:text-4xl text-center'>{t("technologiesTitle")}</h4>
+        <Carousel gradientColor={gradientColor} />
+      </section>
+          </>
+        )}
+
+        {(
+          <section id="projects" className="w-[95%] scroll-mt-24 pt-10 pb-20 2xl:max-w-6xl mx-auto">
+            <h4 className='text-3xl text-center font-bold text-[#1C243A] dark:text-white lg:text-4xl lg:text-start'>{t("projetctsTitle")}</h4>
+            <p className='mt-3 mb-10 text-center text-zinc-500 dark:text-[#cccc] lg:text-start'>{t("projectsSubtitle")}</p>
+            <div className="flex items-stretch overflow-x-auto pb-4 snap-x">
+              {projectItems.map((item, index) => (
+                <ProjectCard
+                  key={index}
+                  projectName={item.projectName}
+                  urlImg={item.urlImg}
+                  description={item.description}
+                  tags={item.tags}
+                  linksBtns={item.linksBtns}
+                  date={item.date}
+                  t={t}
+                />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {(
+          <>
+            <section id="experience" className='w-[95%] scroll-mt-24 pt-10 text-[#1C243A] dark:text-white 2xl:w-full 2xl:max-w-6xl mx-auto'>
+              <h4 className='text-3xl text-center font-bold my-10 lg:text-start lg:text-4xl'>{t("experienceTitle")}</h4>
+              <div className='flex flex-col gap-y-12 mb-20'>
+                {experienceItems.map((item, index) => (
+                  <ExperienceItem
+                    key={index}
+                    linkImg={item.linkImg}
+                    urlImg={item.urlImg}
+                    CorporationName={item.CorporationName}
+                    role={item.role}
+                    status={item.status}
+                    ExperienceDate={item.ExperienceDate}
+                    description={item.description}
+                  />
+                ))}
+              </div>
+            </section>
+
+            <section className='w-[95%] mt-20 pb-20 text-[#1C243A] dark:text-white 2xl:w-full 2xl:max-w-6xl mx-auto'>
+              <h4 className='text-3xl text-center font-bold my-10 lg:text-start lg:text-4xl'>{t("academicTitle")}</h4>
+              <div className='flex flex-col gap-y-12 mb-20'>
+                {academicItems.map((item, index) => (
+                  <AcademicItem
+                    key={index}
+                    linkImg={item.linkImg}
+                    urlImg={item.urlImg}
+                    collegeName={item.collegeName}
+                    courseName={item.courseName}
+                    status={item.status}
+                    graduationDate={item.graduationDate}
+                    description={item.description}
+                  />
+                ))}
+              </div>
+            </section>
+          </>
+        )}
+
+        {(
+          <section id="contact" className="w-[95%] scroll-mt-24 pt-10 pb-20 text-[#1C243A] dark:text-white 2xl:max-w-6xl mx-auto">
+            <h4 className='text-3xl text-center font-bold lg:text-start lg:text-4xl'>{t("contact.title")}</h4>
+            <p className='mt-3 max-w-xl text-center text-zinc-500 dark:text-[#cccc] lg:text-start'>{t("contact.subtitle")}</p>
+
+            <div className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
+              <a href={`mailto:${CONTACT_EMAIL}`} className={outlineBtn}>
+                <Mail size={20} /> {t("contact.email")}
+              </a>
+              <a
+                href={WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER}` : undefined}
+                target="_blank"
+                rel="noreferrer"
+                className={outlineBtn}
+              >
+                <MessageCircle size={20} /> {t("contact.whatsapp")}
+              </a>
+            </div>
+
+            <form onSubmit={handleSubmit} className="mt-10 w-full max-w-2xl rounded-lg border border-[#1C243A]/30 dark:border-white/20 p-6 flex flex-col gap-5">
+              <label className="flex flex-col gap-2 text-sm font-semibold">
+                {t("contact.name")}
+                <input name="name" value={form.name} onChange={handleChange} required placeholder={t("contact.namePh")} className={inputClass} />
+              </label>
+              <label className="flex flex-col gap-2 text-sm font-semibold">
+                {t("contact.emailLabel")}
+                <input name="email" type="email" value={form.email} onChange={handleChange} required placeholder={t("contact.emailPh")} className={inputClass} />
+              </label>
+              <label className="flex flex-col gap-2 text-sm font-semibold">
+                {t("contact.message")}
+                <textarea name="message" rows={5} value={form.message} onChange={handleChange} required placeholder={t("contact.messagePh")} className={inputClass + " resize-y"} />
+              </label>
+              <button type="submit" className={outlineBtn + " self-start"}>
+                <Send size={18} /> {t("contact.send")}
+              </button>
+            </form>
+          </section>
+        )}
+      </div>
+
+      <footer className='border-t py-15 border-zinc-800'>
+        <div className='flex flex-col items-center lg:flex-row justify-between dark:text-[#ccc] text-[#515151] text-sm 2xl:max-w-6xl mx-auto'>
+          <p>All rights reserved © 2026</p>
+          <p>{t("footer_dev")} <a className='text-[#1C243A] dark:text-[#ffff] hover:cursor-pointer' href='https://www.linkedin.com/in/thiagooliveiradev/'>Thiago Oliveira</a></p>
+        </div>
+      </footer>
+    </div>
+  )
+}
+
+export default App
