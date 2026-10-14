@@ -1,0 +1,126 @@
+{
+  "role": "Desenvolvedor FullStack",
+  "intro": "Olá, meu nome é Thiago Oliveira, tenho 20 anos e sou apaixonado por tecnologia. Sou formado em desenvolvimento Full Stack pelo programa de formação Full Stack React e Node, <a href='https://programadoresdoamanha.org.br/' target='_blank' class='text-[#1C243A] dark:text-[white] hover:cursor-pointer'>Programadores do Amanhã</a>. Atualmente, curso Engenharia de Software na <a href='https://www.pucminas.br' target='_blank' class='text-[#1C243A] dark:text-white hover:cursor-pointer'>PUC Minas</a>.",
+  "technologiesTitle": "Minhas Tecnologias",
+  "projetctsTitle": "Meus Projetos",
+  "academicTitle": "Formações Acadêmicas",
+  "experienceTitle": "Experiências Profissionais",
+  "hidden_text_items": [
+    "Ver menos",
+    "Ver mais"
+  ],
+  "academic_items": [
+    {
+      "linkImg": "https://www.pucminas.br/PucVirtual/Graduacao/Paginas/Analise-e-Desenvolvimento-de-Sistemas-Tecnologo.aspx",
+      "urlImg": "/img/logo_puc.png",
+      "collegeName": "Puc Minas",
+      "courseName": "Engenharia de Software",
+      "status": "Cursando",
+      "graduationDate": "2025-07-18 - O Momento",
+      "description": "Atualmente, curso Análise e Desenvolvimento de Sistemas na PUC Minas, onde estou aprofundando meus conhecimentos em lógica de programação, estruturas de dados, desenvolvimento web, banco de dados e engenharia de software. A formação combina teoria e prática, preparando-me para atuar de forma crítica e inovadora no setor de tecnologia, com foco em soluções eficientes e alinhadas às demandas do mercado."
+    },
+    {
+      "linkImg": "https://programadoresdoamanha.org.br/pt",
+      "urlImg": "/img/logo_pda.jpeg",
+      "collegeName": "Programadores do Amanhã",
+      "courseName": "Desenvolvimento Web FullStack",
+      "graduationDate": "2025-07-14 - 2027-08-18",
+      "description": "Completei o curso de Desenvolvimento Web Full Stack, com duração de 1 ano e carga horária de 720 horas. Durante o curso, desenvolvi habilidades técnicas em programação front-end e back-end, além de aprimorar meu inglês e soft skills, como comunicação, trabalho em equipe e resolução de problemas. Essa formação me preparou para atuar de forma completa no desenvolvimento de aplicações web, unindo conhecimentos técnicos e competências interpessoais essenciais para o mercado de tecnologia."
+    },
+    {
+      "linkImg": "https://sistemadivinaprovidencia.org/",
+      "urlImg": "/img/logo_SDP.jpeg",
+      "collegeName": "Cetaí Santo André Apóstolo",
+      "courseName": "Robótica",
+      "status": "Concluído",
+      "graduationDate": "2019-02-02 - 2020-02-02",
+      "description": "Iniciei minha trajetória em programação através do curso de Robótica, onde aprendi os fundamentos de robótica e desenvolvi habilidades práticas em Python e C++. Esse primeiro contato com lógica de programação e a integração entre hardware e software foi essencial para consolidar meu interesse na área de tecnologia e desenvolvimento."
+    }
+  ],
+  "experience_items": [
+    {
+      "linkImg": "https://remopt.com.br/pt/home",
+      "urlImg": "/img/remopt_logo.jpeg",
+      "CorporationName": "Remopt",
+      "role": "Desenvolvedor Junior",
+      "ExperienceDate": "2026-08-01 - O Momento",
+      "description": ""
+    },
+    {
+      "linkImg": "https://remopt.com.br/pt/home",
+      "urlImg": "/img/remopt_logo.jpeg",
+      "CorporationName": "Remopt",
+      "role": "Estágio de Desenvolvimento",
+      "ExperienceDate": "2025-07-20 - 2026-08-01",
+      "description": "Atuei no desenvolvimento de aplicações web com React.js, next no front-end e Node.js e Python de back-end construindo, consumindo e integrando APIs REST. aumentando a eficiência de processos. Colaborei também na criação design e protótipos colocando em prática melhorias de UI/UX, familiaridade com Docker para facilitar deploys e colaboração de projetos em equipe através de Git, GitHub e GitLab."
+    }
+  ],
+  "project_items": [
+    {
+      "projectName": "Landing Page DLCE Engenharia",
+      "urlImg": "/img/PREVIEW_DLCE-11-30-2025_11_49_AM.png",
+      "description": "Freelance landing page responsiva utilizando HTML, CSS e JavaScript. Foquei em performance, usabilidade e adaptação para múltiplos dispositivos. Mantive comunicação direta com o cliente para levantamento de requisitos e validação das entregas. Como resultado, a empresa registrou um aumento estimado de 67% nas conversões orgânicas após a ação da nova landing page, devido à melhor estrutura visual e navegabilidade.",
+      "tags": [
+        "HTML5",
+        "CSS3",
+        "JavaScript"
+      ],
+      "linksBtns": [
+        "",
+        "https://dlce.com.br/"
+      ],
+      "date": "09/2025"
+    },
+    {
+      "projectName": "Previsão do Tempo",
+      "urlImg": "/img/previsao_do_tempo_thumb.jpeg",
+      "description": "Aplicação web voltada a fornecer previsões do tempo com base no nome da cidade.  A aplicação consome a API de previsão do tempo do GoWeather. retornando temperatura e velocidade do vento.",
+      "tags": [
+        "HTML5",
+        "CSS3",
+        "Jquery"
+      ],
+      "linksBtns": [
+        "https://github.com/ThiagoOliveiraJ/ProjetoPrevisaoTempo",
+        "https://fascinating-donut-3c31ea.netlify.app/"
+      ],
+      "date": "06/2025"
+    },
+    {
+      "projectName": "Mente Saudável",
+      "urlImg": "/img/mente_saudavel_thumb.jpeg",
+      "description": "Aplicação web voltada para o bem-estar físico e mental, utilizando React e Vite para criar uma interface dinâmica e responsiva. A aplicação consome minha API, construída com Node.js e Express, que fornece dicas em tempo real. Além disso, utilizei Splide JS para criar carrosséis de navegação suave e Axios para integrar as requisições HTTP.",
+      "tags": [
+        "React",
+        "Express",
+        "Node"
+      ],
+      "linksBtns": [
+        "https://github.com/ThiagoOliveiraJ/MenteSaudavel",
+        "https://mente-saudavel.euthiago.com/"
+      ],
+      "date": "11/2024"
+    }
+  ],
+  "footer_dev": "Desenvolvido por",
+  "nav": {
+    "about": "Sobre Mim",
+    "projects": "Projetos",
+    "experience": "Experiências",
+    "contact": "Contato"
+  },
+  "projectsSubtitle": "",
+  "contact": {
+    "title": "Contato",
+    "subtitle": "Vamos conversar? Fale comigo por um dos canais abaixo ou envie uma mensagem pelo formulário.",
+    "email": "E-mail",
+    "whatsapp": "WhatsApp",
+    "name": "Nome",
+    "namePh": "Seu nome",
+    "emailLabel": "E-mail",
+    "emailPh": "voce@email.com",
+    "message": "Mensagem",
+    "messagePh": "Escreva sua mensagem",
+    "send": "Enviar mensagem"
+  }
+}
