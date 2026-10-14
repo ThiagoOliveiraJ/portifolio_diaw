@@ -7,7 +7,8 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "api": "node --env-file=.env server/index.js"
   },
   "dependencies": {
     "@splidejs/react-splide": "^0.7.12",
@@ -19,6 +20,7 @@
     "react-dom": "^19.1.0",
     "react-fast-marquee": "^1.6.5",
     "react-i18next": "^15.5.1",
+    "resend": "^6.33.0",
     "tailwindcss": "^4.1.6"
   },
   "devDependencies": {

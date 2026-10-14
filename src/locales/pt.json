@@ -121,6 +121,9 @@
     "emailPh": "voce@email.com",
     "message": "Mensagem",
     "messagePh": "Escreva sua mensagem",
-    "send": "Enviar mensagem"
+    "send": "Enviar mensagem",
+    "sending": "Enviando...",
+    "success": "Mensagem enviada! Responderei em breve.",
+    "error": "Não foi possível enviar agora. Tente novamente ou use o e-mail/WhatsApp acima."
   }
 }
