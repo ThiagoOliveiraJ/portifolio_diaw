@@ -30,4 +30,8 @@ export default [
       ],
     },
   },
+  {
+    files: ['server/**/*.js', 'api/**/*.js'],
+    languageOptions: { globals: globals.node },
+  },
 ]
