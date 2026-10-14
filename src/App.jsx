@@ -64,13 +64,24 @@ function App() {
     history.replaceState(null, "", `#${key}`);
   };
 
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "", website: "" });
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-  const handleSubmit = (e) => {
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Contato pelo portfólio - ${form.name}`);
-    const body = encodeURIComponent(`${form.message}\n\n${form.name} <${form.email}>`);
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      setForm({ name: "", email: "", message: "", website: "" });
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   };
   const [gradientColor, setGradientColor] = useState('#0A0A0A')
   const [metaColor, setMetaColor] = useState("#ffffff");
@@ -258,9 +269,13 @@ function App() {
                 {t("contact.message")}
                 <textarea name="message" rows={5} value={form.message} onChange={handleChange} required placeholder={t("contact.messagePh")} className={inputClass + " resize-y"} />
               </label>
-              <button type="submit" className={outlineBtn + " self-start"}>
-                <Send size={18} /> {t("contact.send")}
+              {/* honeypot anti-spam: invisível para humanos */}
+              <input name="website" value={form.website} onChange={handleChange} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+              <button type="submit" disabled={status === "sending"} className={outlineBtn + " self-start disabled:opacity-60 disabled:cursor-not-allowed"}>
+                <Send size={18} /> {status === "sending" ? t("contact.sending") : t("contact.send")}
               </button>
+              {status === "success" && <p role="status" className="text-sm text-green-600 dark:text-green-400">{t("contact.success")}</p>}
+              {status === "error" && <p role="alert" className="text-sm text-red-600 dark:text-red-400">{t("contact.error")}</p>}
             </form>
           </section>
         )}

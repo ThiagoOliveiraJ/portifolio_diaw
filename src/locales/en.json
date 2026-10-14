@@ -121,6 +121,9 @@
     "emailPh": "you@email.com",
     "message": "Message",
     "messagePh": "Write your message",
-    "send": "Send message"
+    "send": "Send message",
+    "sending": "Sending...",
+    "success": "Message sent! I'll reply soon.",
+    "error": "Couldn't send right now. Please try again or use the email/WhatsApp above."
   }
 }
